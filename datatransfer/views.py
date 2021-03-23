@@ -1,5 +1,5 @@
 from django.shortcuts import render
 
 
-def index(request):
-    return render(request, 'datatransfer/index.html')
+def peer(request):
+    return render(request, 'datatransfer/peer.html')
