@@ -82,28 +82,7 @@
   function ready() {
       conn.on('data', function (data) {
           console.log("Data recieved");
-          var cueString = "<span class=\"cueMsg\">Cue: </span>";
-          switch (data) {
-              case 'Go':
-                  go();
-                  addMessage(cueString + data);
-                  break;
-              case 'Fade':
-                  fade();
-                  addMessage(cueString + data);
-                  break;
-              case 'Off':
-                  off();
-                  addMessage(cueString + data);
-                  break;
-              case 'Reset':
-                  reset();
-                  addMessage(cueString + data);
-                  break;
-              default:
-                  addMessage("<span class=\"peerMsg\">Peer: </span>" + data);
-                  break;
-          };
+          addMessagePeer(data);
       });
       conn.on('close', function () {
           status.innerHTML = "Connection reset<br>Awaiting connection...";
@@ -111,39 +90,7 @@
       });
   }
 
-  function go() {
-      standbyBox.className = "display-box hidden";
-      goBox.className = "display-box go";
-      fadeBox.className = "display-box hidden";
-      offBox.className = "display-box hidden";
-      return;
-  };
-
-  function fade() {
-      standbyBox.className = "display-box hidden";
-      goBox.className = "display-box hidden";
-      fadeBox.className = "display-box fade";
-      offBox.className = "display-box hidden";
-      return;
-  };
-
-  function off() {
-      standbyBox.className = "display-box hidden";
-      goBox.className = "display-box hidden";
-      fadeBox.className = "display-box hidden";
-      offBox.className = "display-box off";
-      return;
-  }
-
-  function reset() {
-      standbyBox.className = "display-box standby";
-      goBox.className = "display-box hidden";
-      fadeBox.className = "display-box hidden";
-      offBox.className = "display-box hidden";
-      return;
-  };
-
-  function addMessage(msg) {
+  function addMessageUser(msg) {
       var now = new Date();
       var h = now.getHours();
       var m = addZero(now.getMinutes());
@@ -160,14 +107,36 @@
           return t;
       };
 
-      message.innerHTML = "<br><span class=\"msg-time\">" + h + ":" + m + ":" + s + "</span>  -  " + msg + message.innerHTML;
-  }
+      message.innerHTML = message.innerHTML + "<div class=\"media w-50 ml-auto mb-3\"><div class=\"media-body\"><div class=\"bg-primary rounded py-2 px-3 mb-2\"><p class=\"text-small mb-0 text-white\">"
+       + msg +
+       "</p></div><p class=\"small text-muted\">"
+        + h + ":" +m + 
+        "</p></div></div></div>";
+  };
+  function addMessagePeer(msg) {
+    var now = new Date();
+    var h = now.getHours();
+    var m = addZero(now.getMinutes());
+    var s = addZero(now.getSeconds());
 
-  function clearMessages() {
-      message.innerHTML = "";
-      addMessage("Msgs cleared");
-  }
+    if (h > 12)
+        h -= 12;
+    else if (h === 0)
+        h = 12;
 
+    function addZero(t) {
+        if (t < 10)
+            t = "0" + t;
+        return t;
+    };
+
+    message.innerHTML = message.innerHTML + "<div class=\"media w-50 mb-3\"><img src=\"https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg\"alt=\"user\"width=\"50\"class=\"rounded-circle\"/><div class=\"media-body ml-3\"><div class=\"bg-light rounded py-2 px-3 mb-2\"><p class=\"text-small mb-0 text-muted\">" +
+    msg +
+    "</p></div><p class=\"small text-muted\">" + 
+    h + ":" + m + 
+    "</p></div></div>";
+
+  };
   // Listen for enter in message box
   sendMessageBox.addEventListener('keypress', function (e) {
       var event = e || window.event;
@@ -182,14 +151,14 @@
           sendMessageBox.value = "";
           conn.send(msg);
           console.log("Sent: " + msg)
-          addMessage("<span class=\"selfMsg\">Self: </span>" + msg);
+          addMessageUser(msg);
       } else {
           console.log('Connection is closed');
       }
   });
 
   // Clear messages box
-  clearMsgsButton.addEventListener('click', clearMessages);
+//   clearMsgsButton.addEventListener('click', clearMessages);
 
   initialize();
 })();
