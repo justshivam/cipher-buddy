@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'portal.apps.PortalConfig',
-    'datatransfer.apps.DatatransferConfig'
+    'datatransfer.apps.DatatransferConfig',
+    'login.apps.LoginConfig'
 ]
 
 MIDDLEWARE = [
