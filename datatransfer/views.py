@@ -11,3 +11,7 @@ def recText(request):
 
 def sendText(request):
     return render(request, 'datatransfer/send.html')
+
+
+def data(request):
+    return render(request, 'datatransfer/data.html')
