@@ -1,21 +1,36 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 
 def home(request):
-    return render(request, 'portal/home.html')
+    if request.user.is_authenticated:
+        return render(request, 'portal/home.html')
+    else:
+        return redirect('/')
 
 
 def complaint(request):
-    return render(request, 'portal/complaint.html')
+    if request.user.is_authenticated:
+        return render(request, 'portal/complaint.html')
+    else:
+        return redirect('/')
 
 
 def contact(request):
-    return render(request, 'portal/contactUs.html')
+    if request.user.is_authenticated:
+        return render(request, 'portal/contactUs.html')
+    else:
+        return redirect('/')
 
 
 def about(request):
-    return render(request, 'portal/aboutUs.html')
+    if request.user.is_authenticated:
+        return render(request, 'portal/aboutUs.html')
+    else:
+        return redirect('/')
 
 
 def status(request):
-    return render(request, 'portal/status.html')
+    if request.user.is_authenticated:
+        return render(request, 'portal/status.html')
+    else:
+        return redirect('/')

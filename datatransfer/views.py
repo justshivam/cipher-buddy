@@ -1,17 +1,29 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 def peer(request):
-    return render(request, 'datatransfer/peer.html')
+    if request.user.is_authenticated:
+        return render(request, 'datatransfer/peer.html')
+    else:
+        return redirect('/')
 
 
 def recText(request):
-    return render(request, 'datatransfer/receive.html')
+    if request.user.is_authenticated:
+        return render(request, 'datatransfer/receive.html')
+    else:
+        return redirect('/')
 
 
 def sendText(request):
-    return render(request, 'datatransfer/send.html')
+    if request.user.is_authenticated:
+        return render(request, 'datatransfer/send.html')
+    else:
+        return redirect('/')
 
 
 def data(request):
-    return render(request, 'datatransfer/data.html')
+    if request.user.is_authenticated:
+        return render(request, 'datatransfer/data.html')
+    else:
+        return redirect('/')
