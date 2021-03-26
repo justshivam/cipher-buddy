@@ -72,8 +72,8 @@ def about(request):
                     return redirect('/portal/contact')
                 if not Email.objects.filter(email=email).exists():
                     x = Email.objects.create(email=email)
-                x = SiteComplaint(Email.objects.get(email=email), name=name,
-                                  phone=phone, details=details, time=callTime)
+                x = Contact(Email.objects.get(email=email), name=name,
+                            phone=phone, details=details, time=callTime)
                 x.save()
                 messages.info("Submitted successfully")
                 return redirect('/portal/contact')

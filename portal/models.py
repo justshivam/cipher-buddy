@@ -31,7 +31,7 @@ class SiteComplaint(models.Model):
         return f'{self.website} - {self.subject}'
 
 
-class SiteComplaint(models.Model):
+class Contact(models.Model):
     email = models.ForeignKey(Email, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     phone = models.IntegerField()
