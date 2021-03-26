@@ -81,7 +81,24 @@
             </ul>
           </div>
         </nav>
-        <div class="container"></div>
+        <div class="container">
+          <table>
+            <thead>
+              <tr class="col-md-12">
+                <th>Number</th>
+                <th class="col-md-6">Subject</th>
+                <th class="col-md-3">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in com %}
+              <td>{{ i.phone }}</td>
+              <td class="col-md-6">{{ i.subject }}</td>
+              <td class="col-md-3"></td>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
       </div>
       <footer class="bg-white sticky-footer">
         <div class="container my-auto">
