@@ -68,8 +68,9 @@
               <li class="nav-item dropdown no-arrow">
                 <div class="nav-item dropdown no-arrow">
                   <a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span
-                      class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img
-                      class="border rounded-circle img-profile"
+                      class="d-none d-lg-inline mr-2 text-gray-600 small">{% if user.is_authenticated %}
+                      {{ user.first_name }}
+                      {% endif %}</span><img class="border rounded-circle img-profile"
                       src="{% static '/assets/img/avatars/avatar1.jpeg' %}" /></a>
                   <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in">
                     <a class="dropdown-item" href="#"><i
