@@ -1,22 +1,14 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <link href="{% static 'css/style.css' %}" rel="stylesheet" />
 <link href="{% static 'css/clipboard.css' %}" rel="stylesheet" />
-<link rel="shortcut icon" href="{% static '/img/favicon.png' %}" />
+
 <body id="page-top">
   <div id="wrapper">
-    <nav
-      class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
-    >
+    <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
       <div class="container-fluid d-flex flex-column p-0">
-        <a
-          class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
-          href="#"
-        >
+        <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
           <div>
-            <img
-              src="{% static '/assets/img/Layer2.png' %}"
-              style="width: 40px"
-            />
+            <img src="{% static '/assets/img/Layer2.png' %}" style="width: 40px" />
           </div>
           <div class="sidebar-brand-text mx-3"><span>Cipher Buddy</span></div>
         </a>
@@ -26,9 +18,7 @@
             <a class="nav-link" href="/portal/home">Submit Cyber Complaint</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/portal/complaint"
-              >Submit Site Complaint</a
-            >
+            <a class="nav-link" href="/portal/complaint">Submit Site Complaint</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/portal/status">Complaint Status</a>
@@ -56,9 +46,7 @@
               <div id="step1">
                 <div class="content">
                   <a class="button send magenta">getting ready</a>
-                  <small
-                    >Send files peer-to-peer and end-to-end encrypted.</small
-                  ><br />
+                  <small>Send files peer-to-peer and end-to-end encrypted.</small><br />
                   <br />
                   <input type="file" id="send-input" />
                 </div>
@@ -67,21 +55,13 @@
               <div id="step2">
                 <div class="content if-send">
                   <div class="input-group">
-                    <input type=url class=url upload onClick=this.select()
-                    readonly id=connection-id ${!state.dashboard.connectionId ?
-                    'disabled' : 'readonly' } value="${window.location.href +
+                    <input type=url class=url upload onClick=this.select() readonly id=connection-id
+                      ${!state.dashboard.connectionId ? 'disabled' : 'readonly' } value="${window.location.href +
                     '#/join/' + state.dashboard.connectionId}">
                     <span class="input-group-button">
-                      <button
-                        class="btn"
-                        data-clipboard-target="#connection-id"
-                      >
-                        <img
-                          class="clippy"
-                          src="{% static 'img/clippy.svg' %}"
-                          alt="Copy to
-                        clipboard"
-                        />
+                      <button class="btn" data-clipboard-target="#connection-id">
+                        <img class="clippy" src="{% static 'img/clippy.svg' %}" alt="Copy to
+                        clipboard" />
                       </button>
                     </span>
                   </div>
@@ -111,16 +91,13 @@
           <div class="text-center my-auto copyright">
             <span>Copyright © Cipher Buddy 2021</span>
             <div style="margin-top: 8px">
-              <span>Made with&nbsp;</span><i class="fa fa-heart"></i
-              ><span>&nbsp;by BARCODERS</span>
+              <span>Made with&nbsp;</span><i class="fa fa-heart"></i><span>&nbsp;by BARCODERS</span>
             </div>
           </div>
         </div>
       </footer>
     </div>
-    <a class="border rounded d-inline scroll-to-top" href="#page-top"
-      ><i class="fas fa-angle-up"></i
-    ></a>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
   </div>
   <script src="{% static '/assets/js/jquery.min.js' %}"></script>
   <script src="{% static '/assets/bootstrap/js/bootstrap.min.js' %}"></script>
