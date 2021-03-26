@@ -46,3 +46,10 @@ def createUser(request):
     else:
         print('not here')
         return render(request, 'login/createUser.html')
+
+
+def logout(request):
+    if request.user.is_authenticated:
+        auth.logout(request)
+        return redirect('/logout')
+    return redirect('/')
