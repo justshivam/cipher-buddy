@@ -84,7 +84,7 @@ def about(request):
 
 def status(request):
     if request.user.is_authenticated:
-        complaint = Complaint.objects.filter(email=request.user.username)
-        return render(request, 'portal/status.html', {'com': complaint})
+        complaint = Complaint.objects.all()
+        return render(request, 'portal/status.html')
     else:
         return redirect('/')
