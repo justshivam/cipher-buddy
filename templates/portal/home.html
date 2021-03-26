@@ -53,26 +53,14 @@
                 <a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><i
                     class="fas fa-search"></i></a>
                 <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" aria-labelledby="searchDropdown">
-                  <form class="form-inline mr-auto navbar-search w-100">
-                    <div class="input-group">
-                      <input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..." />
-                      <div class="input-group-append">
-                        <button class="btn btn-primary py-0" type="button">
-                          <i class="fas fa-search"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </form>
                 </div>
               </li>
               <li class="nav-item dropdown no-arrow">
                 <div class="nav-item dropdown no-arrow">
                   <a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span
                       class="d-none d-lg-inline mr-2 text-gray-600 small">
-                      {% if user.is_authenticated %}
-                      {{ user.first_name }}
-                      {% endif %}
-                    </span><img class="border rounded-circle img-profile"
+                      {% if user.is_authenticated %} {{ user.first_name }} {% endif %} </span><img
+                      class="border rounded-circle img-profile"
                       src="{% static '/assets/img/avatars/avatar1.jpeg' %}" /></a>
                   <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in">
                     <a class="dropdown-item" href="/logout"><i
@@ -84,103 +72,27 @@
           </div>
         </nav>
         <div class="container">
-          <div class="modal fade" role="dialog" tabindex="-1" id="modal1">
-            <div class="modal-dialog modal-lg" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4>Contact Information</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form id="contactForm-1" action="javascript:void();" method="get">
-                    <input class="form-control" type="hidden" name="Introduction"
-                      value="This email was sent from www.mywebsite.com" /><input class="form-control" type="hidden"
-                      name="subject" value="My Contact Form" /><input class="form-control" type="hidden" name="to"
-                      value="email@mywebsite.com" />
-                    <div class="form-row">
-                      <div class="col-md-6">
-                        <div id="modal-successfail"></div>
-                      </div>
-                    </div>
-                    <div class="form-row">
-                      <div class="col-md-6" id="modal-message">
-                        <fieldset>
-                          <legend>
-                            <i class="fa fa-envelope"></i> Contact Us
-                          </legend>
-                        </fieldset>
-                        <div class="form-group has-feedback">
-                          <label for="modal_from_name">Name</label><input class="form-control" type="text"
-                            id="modal_from_name" tabindex="-1" name="from_name" required="" placeholder="Full Name" />
-                        </div>
-                        <div class="form-group has-feedback">
-                          <label for="modal_from_email">Email</label><input class="form-control" type="email"
-                            id="modal_from_email" name="from_email" required="" placeholder="Email Address" />
-                        </div>
-                        <div class="form-row">
-                          <div class="col-sm-6">
-                            <div class="form-group has-feedback">
-                              <label for="modal_from_phone">Phone</label><input class="form-control" type="text"
-                                id="modal_from_phone" name="from_phone" placeholder="Primary Phone" />
-                            </div>
-                          </div>
-                          <div class="col-sm-6">
-                            <div class="form-group">
-                              <label for="modal_calltime">Best Time to Call</label><select class="form-control"
-                                id="modal_calltime" name="Call Time">
-                                <option value="Morning" selected="">
-                                  Morning
-                                </option>
-                                <option value="Afternoon">Afternoon</option>
-                                <option value="Evening">Evening</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="modal_comments">Comments</label><textarea class="form-control" id="modal_comments"
-                            name="Comments" placeholder="Enter comments here" rows="5"></textarea>
-                        </div>
-                        <div class="form-group">
-                          <button class="btn btn-primary btn-block" type="submit">
-                            Send <i class="fa fa-chevron-circle-right"></i>
-                          </button>
-                        </div>
-                        <hr />
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
+          <div>
+            {% for i in messages %}
+            <p style="color: red;">{{ i }}</p>
+            {% endfor %}
           </div>
-          <form id="contactForm-2" action="javascript:void();" method="get">
-            <input class="form-control" type="hidden" name="Introduction"
-              value="This email was sent from www.mywebsite.com" /><input class="form-control" type="hidden"
-              name="subject" value="My Contact Form" /><input class="form-control" type="hidden" name="to"
-              value="email@mywebsite.com" />
-            <div class="form-row">
-              <div class="col-md-6">
-                <div id="successfail"></div>
-              </div>
-            </div>
+          <form id="contactForm-2" action="/portal/home" method="POST">
+            {% csrf_token %}
             <div class="form-row">
               <div class="col-md-6 col-md-12" id="message">
-                <fieldset></fieldset>
                 <div class="form-group has-feedback">
                   <label for="from_name">Name</label><input class="form-control" type="text" id="from_name"
-                    tabindex="-1" name="from_name" required="" placeholder="Full Name" />
+                    tabindex="-1" name="name" required="" placeholder="Full Name" />
                 </div>
                 <div class="form-group has-feedback">
-                  <label for="from_email">Email</label><input class="form-control" type="email" id="from_email"
-                    name="from_email" required="" placeholder="Email Address" />
+                  <label for="from_email">Phone no.</label><input class="form-control" type="text" id="from_email"
+                    name="phone" required="" placeholder="Phone Number" />
                 </div>
                 <div class="form-row">
                   <div class="col-sm-6 col-md-12">
                     <div class="form-group">
-                      <label for="from_phone">Subject</label><input class="form-control" type="text" id="from_phone-2"
+                      <label for="from_phone">Subject</label><input class="form-control" type="text" id="from_phone"
                         name="subject" placeholder="Subject" />
                     </div>
                   </div>
@@ -190,7 +102,8 @@
                     placeholder="Describe your experience here." rows="5"></textarea>
                 </div>
                 <div class="form-group">
-                  <label for="calltime">Upload Image</label>
+                  <label for="image">Upload Image</label>
+                  <br /><input type="file" id="image" name="file" />
                 </div>
                 <div class="form-group">
                   <button class="btn btn-primary btn-block" type="submit">
@@ -203,7 +116,7 @@
           </form>
           <div>
             <h4>Example:</h4>
-            <p style="color: #858796;font-weight: 200;font-size: smaller;">
+            <p style="color: #858796; font-weight: 200; font-size: smaller">
               Name: Atmaram Bhide
               <br />
               Number: 8574236524
@@ -212,16 +125,21 @@
               <br />
               Description of Fraud:
               <br />
-              A few days back I received a mail from johnv@yandex.com about me winning a lottery of Rs.1 Crore. To claim
-              my prize I had to deposit Rs 75000 at first and then Rs 50000 in their account for transfer expenses as
-              they said. Between the first and second transactions I got many mails for transacting the money quickly
-              else the prize will go to the next lucky winner. I even got a call in that time period from Mr. John
-              Vincent, the claimed organizer explaining how things will happen. After the second transaction I have
-              neither got a mail nor any calls and I fear I have been duped. I have tried calling back on the number
-              9211420420 but it says out of network coverage. Please help me.
+              A few days back I received a mail from johnv@yandex.com about me
+              winning a lottery of Rs.1 Crore. To claim my prize I had to
+              deposit Rs 75000 at first and then Rs 50000 in their account for
+              transfer expenses as they said. Between the first and second
+              transactions I got many mails for transacting the money quickly
+              else the prize will go to the next lucky winner. I even got a call
+              in that time period from Mr. John Vincent, the claimed organizer
+              explaining how things will happen. After the second transaction I
+              have neither got a mail nor any calls and I fear I have been
+              duped. I have tried calling back on the number 9211420420 but it
+              says out of network coverage. Please help me.
               <br />
-              Key Details: Date of when it started, Sender email, What was it about, their activities and interactions
-              with you, Additional details.
+              Key Details: Date of when it started, Sender email, What was it
+              about, their activities and interactions with you, Additional
+              details.
             </p>
           </div>
         </div>
