@@ -60,6 +60,23 @@ def contact(request):
 
 def about(request):
     if request.user.is_authenticated:
+        if request.user.is_authenticated:
+            if request.method == 'POST':
+                name = request.POST['name']
+                phone = request.POST['phone']
+                email = request.user.username
+                details = request.POST['details']
+                callTime = request.POST['callTime']
+                if len(phone) != 10:
+                    messages.info(request, "Invalid phone number.")
+                    return redirect('/portal/contact')
+                if not Email.objects.filter(email=email).exists():
+                    x = Email.objects.create(email=email)
+                x = SiteComplaint(Email.objects.get(email=email), name=name,
+                                  phone=phone, details=details, time=callTime)
+                x.save()
+                messages.info("Submitted successfully")
+                return redirect('/portal/contact')
         return render(request, 'portal/aboutUs.html')
     else:
         return redirect('/')

@@ -29,3 +29,14 @@ class SiteComplaint(models.Model):
 
     def __str__(self):
         return f'{self.website} - {self.subject}'
+
+
+class SiteComplaint(models.Model):
+    email = models.ForeignKey(Email, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    phone = models.IntegerField()
+    time = models.CharField(max_length=30)
+    comments = models.CharField(max_length=1000)
+
+    def __str__(self):
+        return self.comments
