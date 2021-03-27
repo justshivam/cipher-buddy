@@ -10,6 +10,7 @@ Cipher Buddy combines latest technologies and innovative approaches that make re
 * P2P Chat
 * Contact Us
 * About us
+* Host it yourself
 
 To use [Cipher Buddy](https://dataencrypted.herokuapp.com/) one needs to signup using a valid email id and then login.
 
@@ -53,6 +54,20 @@ The Section provides you with an option to contact us.
 ### About Us
 The section has the information regading [Cipher Buddy](https://dataencrypted.herokuapp.com/) and the vision of developers.
 
+### Host It Yourself
+- Clone this repo on your machine
+- Create an account on [Heroku](https://heroku.com)
+- Install [Heroku CLI](https://cli-assets.heroku.com/heroku-x64.exe)
+- Open Command Prompt and navifate to the directory in which you have cloned the repo.
+- Login into your [Heroku](https://heroku.com) account using [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+- Enter `heroku create` in cmd to create an app.
+- Enter `git push heroku main` to push the repo to heroku.
+- Enter `heroku ps:scale web=1` to assign a free dyno to the app.
+- Enter `heroku open` to open the link of your app.
+- You are good to go.
+- Admin panel has all the submissions and can be accesed at at `/admin`, however, due to restriction of free deployement, the database may not work properly.
+- You can refer [here](https://stackoverflow.com/questions/36938414/cannot-log-in-to-django-admin-interface-with-heroku-deployed-app) to create a super user.
+
 ## Image Gallery
 
 * Submit Cyber Complaint
@@ -67,5 +82,3 @@ The section has the information regading [Cipher Buddy](https://dataencrypted.he
   ![CC](/ss/CU.jpg)
 * About us
   ![CC](/ss/AU.jpg)
-
-
