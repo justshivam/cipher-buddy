@@ -82,31 +82,16 @@
           </div>
         </nav>
         <div class="container">
-          <div>
-            {% for i in messages %}
-            <p style="color: red;">{{ i }}</p>
-            {% endfor %}
-          </div>
-          <table>
-            <thead>
-              <tr class="col-md-12">
-                <th>Number</th>
-                <th class="col-md-6">Subject</th>
-                <th>Status</th>
-                <th>View</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for i in com %}
-              <tr>
-                <td>{{ i.phone }}</td>
-                <td class="col-md-6">{{ i.subject }}</td>
-                <td class="col-md-3"></td>
-                <td><a href="/portal/status/{{ i.id }}">View</a></td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+          <dl>
+            <dd style="font-weight: 600;">Name:</dd>
+            <dd>{{ com.name }}</dd>
+            <dd style="font-weight: 600;">Phone:</dd>
+            <dd>{{ com.phone }}</dd>
+            <dd style="font-weight: 600;">Subject:</dd>
+            <dd>{{ com.subject }}</dd>
+            <dd style="font-weight: 600;">Details:</dd>
+            <dd>{{ com.details }}</dd>
+          </dl>
         </div>
       </div>
       <footer class="bg-white sticky-footer">

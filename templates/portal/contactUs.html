@@ -88,6 +88,7 @@
             {% endfor %}
           </div>
           <form id="contactForm" action="/portal/about" method="POST">
+            {% csrf_token %}
             <div class="form-row">
               <div class="col-md-6 col-md-12" id="message">
                 <div class="form-group has-feedback">

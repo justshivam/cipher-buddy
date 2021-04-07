@@ -51,5 +51,6 @@ def createUser(request):
 def logout(request):
     if request.user.is_authenticated:
         auth.logout(request)
+        messages.info(request, "Logged out Sucessfully")
         return redirect('/logout')
     return redirect('/')

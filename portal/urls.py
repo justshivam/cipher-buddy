@@ -6,5 +6,6 @@ urlpatterns = [
     path('contact', views.contact),
     path('about', views.about),
     path('complaint', views.complaint),
-    path('status', views.status)
+    path('status', views.status),
+    path('status/<int:val>', views.status_det)
 ]
